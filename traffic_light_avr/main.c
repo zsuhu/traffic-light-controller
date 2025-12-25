@@ -24,7 +24,7 @@ void timer0Init(void) {
 	TIMSK0 = (1 << OCIE0A); // Enable compare match mode on register A
 
 	// Set target value to compare to and trigger interrupt
-	OCR1A = 249; // Every 1 ms (0 -> 250 ticks)
+	OCR0A = 249; // Every 1 ms (0 -> 250 ticks)
 }
 
 ISR(TIMER0_COMPA_vect) { // Run during each timer intrrupt
@@ -97,11 +97,7 @@ int main(void) {
   	while(1) {
   		// Read input signals
   		unsigned long currentTime = millis();
-  		if (PINE & (1 << PINE4)) { // Pin HIGH
-  			buttonState = 1;
-  		} else {
-  			buttonState = 0;
-  		}
+  		buttonState = (PINE & (1 << PINE4));
 
 	  	// State transitions
 	  	switch (currentState) {
