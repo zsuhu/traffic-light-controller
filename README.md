@@ -5,6 +5,13 @@ To install requirements on Linux:
 ```bash
 sudo apt install gcc-avr binutils-avr avr-libc avrdude
 ```
+
+Look for the serial device using:
+```bash
+ls /dev/tty*
+```
+There should be something like `/dev/ttyACM0` or `/dev/ttyUSB0`
+
 To run the program:
 ```bash
 cd /mnt/c/Users/[your_username]/[project_location]
